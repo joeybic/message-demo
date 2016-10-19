@@ -7,7 +7,7 @@ messageSystem = {
     showMessage: function(msg) {
         alert(msg);
     }
-}
+};
 
 
 
@@ -23,7 +23,7 @@ function showMsg() {
     "I have come here to chew bubble gum and kick ass, and I'm all out of bubble gum."
     ];
     messageSystem.showMessage(_.sample(quotes));
-    
+
 }
 
 function loop() {
