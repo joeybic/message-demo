@@ -6,8 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private _running: boolean = false;
-  private _buttonText: string = "Start Messages";
+  public static readonly START_MESSAGES_BUTTON_TEXT: string = 'Start Messages';
+  public static readonly STOP_MESSAGES_BUTTON_TEXT: string = 'Stop Messages';
+
+  _running: boolean = false;
 
   onMessageToggleClick() {
     this._running = !this._running;
@@ -18,10 +20,9 @@ export class AppComponent {
   }
 
   get buttonText(): string {
-    return this._buttonText;
-  }
-
-  set buttonText(buttonText: string) {
-    this._buttonText = buttonText;
+    if (this.running) {
+      return AppComponent.STOP_MESSAGES_BUTTON_TEXT;
+    }
+    return AppComponent.START_MESSAGES_BUTTON_TEXT;
   }
 }

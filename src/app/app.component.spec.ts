@@ -34,10 +34,12 @@ describe('App: MessageDemo', () => {
     expect(app.running).toEqual(false);
   });
 
-  it('should bind the button text to the buttonText field', () => {
-    const buttonText = 'NEW UNEXPECTED BUTTON TEXT';
-    app.buttonText = buttonText;
-    fixture.detectChanges();
-    expect(document.getElementById('message-toggle').innerText).toEqual(buttonText);
+  it('has button text \"' + AppComponent.START_MESSAGES_BUTTON_TEXT + '\" when messages are not running', () => {
+    expect(app.buttonText).toEqual(AppComponent.START_MESSAGES_BUTTON_TEXT);
+  });
+
+  it('has button text \"' + AppComponent.STOP_MESSAGES_BUTTON_TEXT + '\" when messages are running', () => {
+    app._running = true;
+    expect(app.buttonText).toEqual(AppComponent.STOP_MESSAGES_BUTTON_TEXT);
   });
 });
