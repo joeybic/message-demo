@@ -12,7 +12,7 @@ describe('App: MessageDemo', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent
-      ],
+      ]
     });
 
     fixture = TestBed.createComponent(AppComponent);

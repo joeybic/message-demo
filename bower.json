@@ -1,0 +1,6 @@
+{
+  "name": "message demo",
+  "dependencies": {
+    "paper-toast": "PolymerElements/paper-toast#^1.3.0"
+  }
+}
