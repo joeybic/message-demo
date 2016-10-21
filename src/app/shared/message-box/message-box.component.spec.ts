@@ -14,7 +14,8 @@ describe('Component: MessageBox', () => {
     TestBed.configureTestingModule({
       declarations: [
         MessageBoxComponent
-      ]
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     });
 
     fixture = TestBed.createComponent(MessageBoxComponent);
@@ -36,5 +37,12 @@ describe('Component: MessageBox', () => {
     let emitSpy = spyOn(box.closed, 'emit').and.stub();
     fixture.nativeElement.querySelector('#close-button').click();
     expect(emitSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('includes the index of the box in the emitted close event', () => {
+    box.index = 10;
+    let emitSpy = spyOn(box.closed, 'emit').and.stub();
+    fixture.nativeElement.querySelector('#close-button').click();
+    expect(emitSpy).toHaveBeenCalledWith({index: 10});
   });
 });

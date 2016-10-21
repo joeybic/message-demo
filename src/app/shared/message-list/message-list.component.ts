@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 
 @Component({
   selector: 'app-message-list',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageListComponent implements OnInit {
 
+  @Input() messages: string[];
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  removeMessage(index: number) {
+    this.messages.splice(index, 1);
+  }
 }

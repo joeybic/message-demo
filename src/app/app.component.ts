@@ -10,6 +10,7 @@ export class AppComponent {
   public static readonly STOP_MESSAGES_BUTTON_TEXT: string = 'Stop Messages';
 
   _running: boolean = false;
+  private messages: string[] = [ 'message 1', 'message 2' ];
 
   onMessageToggleClick() {
     this._running = !this._running;

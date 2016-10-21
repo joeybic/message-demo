@@ -7,7 +7,9 @@ import {Input, Output} from "@angular/core/src/metadata/directives";
   styleUrls: ['./message-box.component.css']
 })
 export class MessageBoxComponent implements OnInit {
-  @Input() _message: string;
+  @Input() message: string;
+  @Input() index: number;
+
   @Output() closed: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
@@ -16,14 +18,6 @@ export class MessageBoxComponent implements OnInit {
   }
 
   close() {
-    this.closed.emit();
-  }
-
-  get message(): string {
-    return this._message;
-  }
-
-  set message(message: string) {
-    this._message = message;
+    this.closed.emit({index: this.index});
   }
 }
