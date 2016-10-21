@@ -41,7 +41,7 @@ describe('App: MessageDemo', () => {
   });
 
   it('has button text \"' + AppComponent.STOP_MESSAGES_BUTTON_TEXT + '\" when messages are running', () => {
-    app._running = true;
+    app.running = true;
     expect(app.buttonText).toEqual(AppComponent.STOP_MESSAGES_BUTTON_TEXT);
   });
 });
