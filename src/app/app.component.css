@@ -1,0 +1,19 @@
+.footer {
+  margin-top: 25px;
+}
+
+#content {
+  z-index: 0;
+}
+
+#message-list {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+}
+
+paper-button {
+  width: 20%;
+  background-color: darkblue;
+  color: white;
+}
