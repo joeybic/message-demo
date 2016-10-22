@@ -95,7 +95,7 @@ export class AppComponent {
     "Hasta la vista, baby.",
     "Soylent Green is people!",
     "Open the pod bay doors, please, HAL.",
-    "Striker: Surely you can't be serious. <br>\nRumack: I am serious...and don't call me Shirley.",
+    "I am serious...and don't call me Shirley.",
     "Yo, Adrian!",
     "Hello, gorgeous.",
     "Toga!  Toga!",
