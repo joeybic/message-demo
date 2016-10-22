@@ -24,20 +24,17 @@ export class AppComponent {
   }
 
   running: boolean = false;
+  loopHandle: any;
+
   private messages: string[] = [];
 
-  private loopHandle: any;
-
   onMessageToggleClick() {
-    console.log('message toggle click');
     this.running = !this.running;
-    console.log('now im running?' + this.running);
     if (this.running) {
-      this.loopHandle = setTimeout(((self: AppComponent) => {
-        return () => {
-          self.loop(self);
-        }
-      })(this), 500);
+      this.rescheduleLoop();
+    } else if (this.loopHandle) {
+      clearTimeout(this.loopHandle);
+      this.loopHandle = null;
     }
   }
 
@@ -49,17 +46,13 @@ export class AppComponent {
   }
 
   private loop(self) {
-    console.log("looping");
-    console.log('still running? ' + self.running);
-    if (!self.running) {
-      console.log('no longer running. stopping');
-      self.loopHandle = null;
-      return;
-    }
-
     self.messages.push(AppComponent.getRandomQuote());
+    this.rescheduleLoop();
+  }
+
+  private rescheduleLoop() {
     var rand = Math.round(Math.random() * (3000 - 500)) + 500;
-    self.loopHandle = setTimeout(((self: AppComponent) => {
+    this.loopHandle = setTimeout(((self: AppComponent) => {
       return () => {
         self.loop(self);
       }

@@ -44,4 +44,15 @@ describe('App: MessageDemo', () => {
     app.running = true;
     expect(app.buttonText).toEqual(AppComponent.STOP_MESSAGES_BUTTON_TEXT);
   });
+
+  it('has nonnull loop handle while app is running', () => {
+    document.getElementById('message-toggle').click();
+    expect(app.loopHandle).toBeTruthy();
+  });
+
+  it('sets the loop handle back to null after the messages stop', () => {
+    document.getElementById('message-toggle').click();
+    document.getElementById('message-toggle').click();
+    expect(app.loopHandle).toBeFalsy();
+  });
 });

@@ -11,22 +11,25 @@ export class MessageBoxComponent implements OnInit {
   @Input() index: number;
 
   @Output() closed: EventEmitter<any> = new EventEmitter<any>();
+  @Output() expired: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {
 
   }
 
   ngOnInit() {
-    console.log('starting timer');
     setTimeout(((self: MessageBoxComponent) => {
       return () => {
-        console.log('closing based on time constraints');
-        self.close();
+        self.expire();
       };
     })(this), 3000);
   }
 
   close() {
     this.closed.emit({index: this.index});
+  }
+
+  expire() {
+    this.expired.emit();
   }
 }

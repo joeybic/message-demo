@@ -65,4 +65,24 @@ describe('Component: MessageList', () => {
     fixture.debugElement.children[0].children.forEach((comp) => { remainingIndexes.push(comp.properties['index'])});
     expect(remainingIndexes).toEqual([0, 1]);
   });
+
+  it('removes the first message bnox when an element expires', () => {
+    list.messages = ['entry 1', 'entry 2', 'entry 3'];
+    fixture.detectChanges();
+    fixture.debugElement.children[0].children[1].triggerEventHandler('expired', null);
+    fixture.detectChanges();
+    let remainingMessages = [];
+    fixture.debugElement.children[0].children.forEach((comp) => { remainingMessages.push(comp.properties['message'])});
+    expect(remainingMessages).toEqual(['entry 2', 'entry 3']);
+  });
+
+  it('reindexes remaining messagesthe expired event is fired', () => {
+    list.messages = ['entry 1', 'entry 2', 'entry 3'];
+    fixture.detectChanges();
+    fixture.debugElement.children[0].children[0].triggerEventHandler('expired', null);
+    fixture.detectChanges();
+    let remainingIndexes = [];
+    fixture.debugElement.children[0].children.forEach((comp) => { remainingIndexes.push(comp.properties['index'])});
+    expect(remainingIndexes).toEqual([0, 1]);
+  })
 });

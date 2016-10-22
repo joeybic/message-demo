@@ -15,7 +15,8 @@ import { MessageListComponent } from './shared/message-list/message-list.compone
     MessageBoxComponent,
     MessageListComponent,
     PolymerElement('paper-material'),
-    PolymerElement('paper-button')
+    PolymerElement('paper-button'),
+    PolymerElement('paper-toast')
   ],
   imports: [
     BrowserModule,
